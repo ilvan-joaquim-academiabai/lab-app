@@ -42,7 +42,7 @@ export const columns: ColumnDef<any>[] = [
 
       const functional = row.getValue("functional") as number;
       const nonFunctional = row.getValue("nonFunctional") as number;
-      const disabled = functional === 0 && nonFunctional === 0 ? true : false;
+      const disabled = functional === 0 && nonFunctional === 0 && Number(row.id) === 0 ? true : false;
       return (
         <InputLab
           disabled={disabled}
@@ -70,7 +70,7 @@ export const columns: ColumnDef<any>[] = [
       const id = row.original.id;
       const functional = row.getValue("functional") as number;
       const nonFunctional = row.getValue("nonFunctional") as number;
-      const disabled = functional === 0 && nonFunctional === 0 ? true : false;
+      const disabled = functional === 0 && nonFunctional === 0 && Number(row.id) === 0 ? true : false;
       return (
         <InputLab
           disabled={disabled}
@@ -101,7 +101,7 @@ export const columns: ColumnDef<any>[] = [
       // const nonFunctional = row.getValue("nonFunctional") as number;
       // const numberTotal = functional + nonFunctional;
       return (
-        <Input disabled={true} value={String(numberTotal)} type="number" />
+        <Input  value={String(numberTotal)} type="number" />
       );
     },
   },

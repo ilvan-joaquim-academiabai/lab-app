@@ -64,7 +64,7 @@ export default function InputLab({ value, disabled, id, type }: any) {
         // onChange={(value) => updatedColumn(value, id, type)}
         disabled={disabled}
         {...register("value")}
-        min={0}
+        min={1}
         type="number"
       />
       {errors && (

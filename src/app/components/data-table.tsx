@@ -124,7 +124,7 @@ export function DataTable<TData, TValue>({
       </div>
       {}
       <div className="flex items-center justify-end py-4 gap-x-6">
-        <Button onClick={onSubmit} disabled={errors ? true : false}>
+        <Button onClick={onSubmit} disabled={errors ? true : false} className="bg-blue-700">
           <RefreshCw className="w-4 h-4 mr-2" /> Atualizar
         </Button>
       </div>

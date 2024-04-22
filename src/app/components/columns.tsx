@@ -96,12 +96,13 @@ export const columns: ColumnDef<any>[] = [
     },
     cell: ({ row }) => {
       const numberTotal = row.getValue("numberTotal") as number;
+      const disabled = Number(row.id) !== 0 ? true : false;
       console.log(numberTotal);
       
       // const nonFunctional = row.getValue("nonFunctional") as number;
       // const numberTotal = functional + nonFunctional;
       return (
-        <Input  value={String(numberTotal)} type="number" />
+        <Input disabled={disabled}  value={String(numberTotal)} type="number" />
       );
     },
   },

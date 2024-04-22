@@ -23,7 +23,7 @@ export const useStore = create<Lab>((set) => ({
       designation: "Sala de aula Teórica",
       functional: 0,
       nonFunctional: 0,
-      numberTotal: 0,
+      numberTotal: 1,
     },
     {
       id: 2,

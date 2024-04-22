@@ -10,8 +10,10 @@ interface ILab {
 
 interface Lab {
   labs: ILab[];
+  errors: string;
   backetLabs: ILab[];
   updateLab(newLabs: ILab[]): void;
+  updateErros(message: string): void;
 }
 
 export const useStore = create<Lab>((set) => ({
@@ -38,6 +40,8 @@ export const useStore = create<Lab>((set) => ({
       numberTotal: 1,
     },
   ],
+  errors: "",
   backetLabs: [],
   updateLab: (newLabs) => set({ labs: newLabs }),
+  updateErros: (message) => set({ errors: message }),
 }));

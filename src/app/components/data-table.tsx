@@ -24,7 +24,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import { PlusCircle } from "lucide-react";
+import { PlusCircle, RefreshCw } from "lucide-react";
 import { useStore } from "@/store/lab";
 
 interface DataTableProps<TData, TValue> {
@@ -42,6 +42,7 @@ export function DataTable<TData, TValue>({
   );
   const labs = useStore((state) => state.labs);
   const updateLab = useStore((state) => state.updateLab);
+  const errors = useStore((state) => state.errors);
   const onSubmit = () => {
     const newLabs = labs.map((lab, idx) => {
       lab.numberTotal = lab.functional + lab.nonFunctional;
@@ -121,9 +122,10 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
+      {}
       <div className="flex items-center justify-end py-4 gap-x-6">
-        <Button onClick={onSubmit}>
-          <PlusCircle className="w-4 h-4 mr-2" /> Atualizar
+        <Button onClick={onSubmit} disabled={errors ? true : false}>
+          <RefreshCw className="w-4 h-4 mr-2" /> Atualizar
         </Button>
       </div>
     </div>

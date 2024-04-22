@@ -7,6 +7,7 @@ import { z } from "zod";
 export default function InputLab({ value, disabled, id, type }: any) {
   const labs = useStore((state) => state.labs);
   const updateLab = useStore((state) => state.updateLab);
+  const updateErros = useStore((state) => state.updateErros);
   const labSchema = z.object({
     value: z.coerce.number().nonnegative({
       message: "Número positivo obrigatório",
@@ -24,7 +25,12 @@ export default function InputLab({ value, disabled, id, type }: any) {
       value: value,
     },
   });
+
+  if (errors.value?.message) {
+    updateErros(errors.value?.message);
+  }
   const onSubmit = (value: formType) => {
+    updateErros("");
     if (type === "functional") {
       const newLabs = labs.map((lab, idx) => {
         if (lab.id === id) {
@@ -57,7 +63,7 @@ export default function InputLab({ value, disabled, id, type }: any) {
       <Input
         // onChange={(value) => updatedColumn(value, id, type)}
         disabled={disabled}
-        {...(register("value"))}
+        {...register("value")}
         min={0}
         type="number"
       />
